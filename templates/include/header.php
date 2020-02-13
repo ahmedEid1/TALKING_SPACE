@@ -11,7 +11,7 @@
     <title>Welcome to Talking Space</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/talking_space/templates/css/bootstrap.css" rel="stylesheet">
+    <link  href="/talking_space/templates/css/bootstrap.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -19,6 +19,14 @@
     <!-- Custom styles for this template -->
     <link href="/talking_space/templates/css/custom.css" rel="stylesheet">
 
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="/talking_space/templates/js/bootstrap.js"></script>
+    <script src="/talking_space/templates/js/ckeditor/ckeditor.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     <?php if(!isset($title)){
       $title = SITE_TITLE;
     } ?>
@@ -40,8 +48,11 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="index.php">Home</a></li>
+            <?php if(!isLogedIn()){ ?>
             <li><a href="register.php">Create an account</a></li>
+          <?php }else{ ?>
             <li><a href="create.php">Create a topic</a></li>
+          <?php } ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -57,3 +68,4 @@
                   <div class="clearfix">
                   </div>
                   <hr>
+                  <?php displayMessage(); ?>

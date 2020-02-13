@@ -18,6 +18,23 @@ function get_catagories(){
   return $results;
 }
 
+function userPostCount($user_id){
+  $db = new Database;
+  $db->query("SELECT * FROM topics WHERE user_id = :user_id");
+  $db->bind(":user_id",$user_id);
+  $rows = $db->resultset();
 
+  $topics_count = $db->rowCount();
+
+  $db->query("SELECT * FROM replaies WHERE user_id = :user_id");
+  $db->bind(":user_id",$user_id);
+
+  $rows = $db->resultset();
+
+  $replies_count = $db->rowCount();
+
+  return $topics_count + $replies_count;
+
+}
 
  ?>
